@@ -1,0 +1,149 @@
+.botao-direita {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(220, 0, 0, 1);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.botao-direita:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+.botao-direita:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.botao-esquerda {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgba(0, 120, 0, 1);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.botao-esquerda:hover {
+    background-color: rgba(0, 155, 0, 1);
+}
+
+.botao-esquerda:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+table {
+    left: 110px;
+    top: 310px;
+    border-collapse: collapse;
+    /* border: 1px solid black; */
+    position: absolute;
+    border-collapse: separate;
+    border-spacing: 0px 112px;
+    z-index: -1;
+}
+
+table.tr {
+    margin-top: 100px;
+}
+
+td {
+    width: 98px;
+    height: 157px;
+    /* border: 1px solid black; */
+    text-align: center;
+    vertical-align: center;
+    font-size: 18px;
+    position: relative;
+}
+
+.pixel-index {
+    font-size: 10px;
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    color: #777;
+}
+
+td.pixel {
+    width: 4px;
+    height: 4px;
+    border: 0;
+}
+
+.esquerda {
+    background-color: #87fabd;
+}
+
+.direita {
+    background-color: #fa7e70;
+}
+
+#jogo.tremendo {
+    animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+@keyframes shake {
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
+.cabecalhoPrateleira {
+    background-image: url("img/headerPrateleira.png");
+    width: 1000px;
+    height: 380px;
+    background-size: cover;
+}
+
+.linhaPrateleira {
+    background-image: url("img/linhaPrateleira.png");
+    width: 1000px;
+    height: 263px;
+    background-size: cover;
+}
+
+.rodapePrateleira {
+    background-image: url("img/rodapePrateleira.png");
+    width: 1000px;
+    height: 206px;
+    background-size: cover;
+}
+
+.prateleira {
+    position: absolute;
+}
+
+#resposta {
+    position: absolute;
+    top: 1500px;
+    left: 400px;
+}
