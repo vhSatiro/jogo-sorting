@@ -1,3 +1,8 @@
+body {
+    background-image: url("img/bgSortingGame.png");
+    background-size: cover;
+}
+
 .botao-direita {
     border: 0;
     line-height: 2.5;
@@ -43,13 +48,13 @@
 }
 
 table {
-    left: 110px;
-    top: 310px;
+    left: 65px;
+    top: 160px;
     border-collapse: collapse;
     /* border: 1px solid black; */
     position: absolute;
     border-collapse: separate;
-    border-spacing: 0px 112px;
+    border-spacing: 0px 51px;
     z-index: -1;
 }
 
@@ -58,8 +63,8 @@ table.tr {
 }
 
 td {
-    width: 98px;
-    height: 157px;
+    width: 47px;
+    height: 82px;
     /* border: 1px solid black; */
     text-align: center;
     vertical-align: center;
@@ -119,22 +124,22 @@ td.pixel {
 
 .cabecalhoPrateleira {
     background-image: url("img/headerPrateleira.png");
-    width: 1000px;
-    height: 380px;
+    width: 500px;
+    height: 189px;
     background-size: cover;
 }
 
 .linhaPrateleira {
     background-image: url("img/linhaPrateleira.png");
-    width: 1000px;
-    height: 263px;
+    width: 500px;
+    height: 131px;
     background-size: cover;
 }
 
 .rodapePrateleira {
     background-image: url("img/rodapePrateleira.png");
-    width: 1000px;
-    height: 206px;
+    width: 500px;
+    height: 103px;
     background-size: cover;
 }
 
@@ -150,8 +155,8 @@ td.pixel {
 
 #pontuacao {
     position: absolute;
-    top: 1515px;
-    left: 350px;
+    top: 760px;
+    left: 200px;
     color: white;
-    font-size: 50px;
+    font-size: 25px;
 }

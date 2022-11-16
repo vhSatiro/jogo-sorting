@@ -54,43 +54,43 @@ function renderizaVetor() {
                 switch (random) {
                     case 1:
                         elemento.imagem = "img/1blackberry.png";
-                        elemento.widImg = 35;
-                        elemento.heiImg = 45;
+                        elemento.widImg = 17;
+                        elemento.heiImg = 22;
                         break;
                     case 2:
                         elemento.imagem = "img/2strawberry.png";
-                        elemento.widImg = 35;
-                        elemento.heiImg = 45;
+                        elemento.widImg = 17;
+                        elemento.heiImg = 22;
                         break;
                     case 3:
                         elemento.imagem = "img/3lemon.png";
-                        elemento.widImg = 55;
-                        elemento.heiImg = 55;
+                        elemento.widImg = 27;
+                        elemento.heiImg = 27;
                         break;
                     case 4:
                         elemento.imagem = "img/4apple.png";
-                        elemento.widImg = 50;
-                        elemento.heiImg = 50;
+                        elemento.widImg = 25;
+                        elemento.heiImg = 25;
                         break;
                     case 5:
                         elemento.imagem = "img/5banana.png";
-                        elemento.widImg = 50;
-                        elemento.heiImg = 100;
+                        elemento.widImg = 25;
+                        elemento.heiImg = 50;
                         break;
                     case 6:
                         elemento.imagem = "img/6avocado.png";
-                        elemento.widImg = 70;
-                        elemento.heiImg = 70;
+                        elemento.widImg = 35;
+                        elemento.heiImg = 35;
                         break;
                     case 7:
                         elemento.imagem = "img/7pineapple.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.widImg = 44;
+                        elemento.heiImg = 50;
                         break;
                     case 8:
                         elemento.imagem = "img/8watermelon.png";
-                        elemento.widImg = 90;
-                        elemento.heiImg = 90;
+                        elemento.widImg = 44;
+                        elemento.heiImg = 45;
                         break;
                     default:
                         break;

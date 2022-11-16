@@ -10,8 +10,8 @@ body {
 }
 
 .custom-btn {
-    width: 300px;
-    height: 80px;
+    width: 150px;
+    height: 40px;
     color: #fff;
     border-radius: 5px;
     padding: 10px 25px;
@@ -26,7 +26,7 @@ body {
     outline: none;
     border: none;
     overflow: hidden;
-    font-size: 60px;
+    font-size: 20px;
 }
 
 .custom-btn:after {
@@ -52,4 +52,12 @@ body {
     -webkit-transform: scale(2) rotate(180deg);
     transform: scale(2) rotate(180deg);
     box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5), -4px -4px 6px 0 rgba(116, 125, 136, .2), inset -4px -4px 6px 0 rgba(255, 255, 255, .5), inset 4px 4px 6px 0 rgba(116, 125, 136, .3);
+}
+
+.titulo {
+    color: #fff;
+    font-size: 60px;
+    position: absolute;
+    top: 30%;
+    left: 40%;
 }
