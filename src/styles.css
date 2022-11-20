@@ -68,7 +68,8 @@ body {
     border: 1px solid black;
     border-radius: 15px;
     position: absolute;
-    left: 1250px;
+    left: 50px;
+    /* left -> 1250px posiciona na direita e 50px posiciona na esquerda  */
     top: 100px;
     color: black;
     background-color: white;
