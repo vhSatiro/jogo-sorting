@@ -61,3 +61,17 @@ body {
     top: 30%;
     left: 40%;
 }
+
+.texto-explicativo {
+    width: 600px;
+    height: 600px;
+    border: 1px solid black;
+    border-radius: 15px;
+    position: absolute;
+    left: 50px;
+    /* left -> 1250px posiciona na direita e 50px posiciona na esquerda  */
+    top: 100px;
+    color: black;
+    background-color: white;
+    padding: 15px;
+}
