@@ -1,4 +1,4 @@
-const colunasTabela = 9;
+const colunasTabela = 10;
 const linhasTabela = 4;
 const elementosTabela = [];
 let opcaoSelecionada = "";
@@ -48,8 +48,8 @@ function criarTabela() {
 function renderizaVetor() {
     for (let i = 0; i < colunasTabela; i++) {
         do {
-            const random = Math.floor(Math.random() * 10);
-            if (random > 0 && (vetor.find(item => item.valor === random) === undefined) && random < 10) {
+            const random = Math.floor(Math.random() * 11);
+            if (random > 0 && (vetor.find(item => item.valor === random) === undefined) && random < 11) {
                 var elemento = { valor: random, imagem: null, widImg: 0, heiImg: 0 };
                 switch (random) {
                     case 1:
@@ -97,6 +97,11 @@ function renderizaVetor() {
                         elemento.widImg = 44;
                         elemento.heiImg = 45;
                         break;
+                    case 10:
+                        elemento.imagem = "img/10jackfruit.png";
+                        elemento.widImg = 48;
+                        elemento.heiImg = 53;
+                        break;
                     default:
                         break;
 
@@ -131,40 +136,32 @@ function desenhaTabela() {
     html += "</table>";
 
     document.querySelector("#elemento").innerHTML = html;
-    if (ultimoIndiceComparado < 3) {
-        document.querySelector("#" + CSS.escape(0)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(1)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(2)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 5) {
-        document.querySelector("#" + CSS.escape(3)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(4)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 7) {
-        document.querySelector("#" + CSS.escape(5)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(6)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 9) {
-        document.querySelector("#" + CSS.escape(7)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(8)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 14) {
-        document.querySelector("#" + CSS.escape(9)).classList.add("esquerda");
+    if (ultimoIndiceComparado < 10) {
+        document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.add("direita");
+    } else if (ultimoIndiceComparado < 15) {
         document.querySelector("#" + CSS.escape(10)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(11)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(12)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(12)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(13)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 18) {
-        document.querySelector("#" + CSS.escape(14)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(14)).classList.add("direita");
+    } else if (ultimoIndiceComparado < 20) {
         document.querySelector("#" + CSS.escape(15)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(16)).classList.add("direita");
-        document.querySelector("#" + CSS.escape(17)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 27) {
-        document.querySelector("#" + CSS.escape(18)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(19)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(16)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(17)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(18)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(19)).classList.add("direita");
+    } else if (ultimoIndiceComparado < 30) {
         document.querySelector("#" + CSS.escape(20)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(21)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(22)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(23)).classList.add("direita");
-        document.querySelector("#" + CSS.escape(24)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(23)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(24)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(25)).classList.add("direita");
         document.querySelector("#" + CSS.escape(26)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(27)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(28)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(29)).classList.add("direita");
     } else {
         document.querySelectorAll("td").classList.remove("esquerda");
         document.querySelectorAll("td").classList.remove("direita");
@@ -195,22 +192,18 @@ function recuperaMenorValor(vetor) {
 }
 
 function efetuaPrimeiraRodadaComparativa() {
-    if (ultimoIndiceComparado == 0) {
-        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1]];
-        direita = [elementosTabela[ultimoIndiceComparado + 2]];
-    } else if (((ultimoIndiceComparado % 2) != 0 && ultimoIndiceComparado > 2)) {
-        esquerda = [elementosTabela[ultimoIndiceComparado]];
-        direita = [elementosTabela[ultimoIndiceComparado + 1]];
-    }
-    if (opcaoSelecionada == comparaValores(esquerda, direita)) {
+    esquerda = elementosTabela[ultimoIndiceComparado];
+    direita = elementosTabela[ultimoIndiceComparado + 1];
+
+    if (opcaoSelecionada == comparaValores([esquerda], [direita])) {
         if (opcaoSelecionada == "E") {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(esquerda);
-            removeMenorDoArray(esquerda);
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = esquerda;
+            elementosTabela[ultimoIndiceComparado + colunasTabela + 1] = direita;
         } else {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(direita);
-            removeMenorDoArray(direita);
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = direita;
+            elementosTabela[ultimoIndiceComparado + colunasTabela + 1] = esquerda;
         }
-        ultimoIndiceComparado = ultimoIndiceComparado + 1;
+        ultimoIndiceComparado = ultimoIndiceComparado + 2;
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("direita");
         pontuacao += 5;
@@ -222,12 +215,12 @@ function efetuaPrimeiraRodadaComparativa() {
 }
 
 function efetuaSegundaRodadaComparativa() {
-    if (ultimoIndiceComparado == 9) {
+    if (ultimoIndiceComparado == 10) {
         esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2]];
         direita = [elementosTabela[ultimoIndiceComparado + 3], elementosTabela[ultimoIndiceComparado + 4]];
-    } else if (ultimoIndiceComparado == 14) {
-        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1]];
-        direita = [elementosTabela[ultimoIndiceComparado + 2], elementosTabela[ultimoIndiceComparado + 3]];
+    } else if (ultimoIndiceComparado == 15) {
+        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2]];
+        direita = [elementosTabela[ultimoIndiceComparado + 3], elementosTabela[ultimoIndiceComparado + 4]];
     }
     if (opcaoSelecionada == comparaValores(esquerda, direita)) {
         if (opcaoSelecionada == "E") {
@@ -251,9 +244,9 @@ function efetuaSegundaRodadaComparativa() {
 }
 
 function efetuaTerceiraRodadaComparativa() {
-    if (ultimoIndiceComparado == 18) {
+    if (ultimoIndiceComparado == 20) {
         esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2], elementosTabela[ultimoIndiceComparado + 3], elementosTabela[ultimoIndiceComparado + 4]];
-        direita = [elementosTabela[ultimoIndiceComparado + 5], elementosTabela[ultimoIndiceComparado + 6], elementosTabela[ultimoIndiceComparado + 7], elementosTabela[ultimoIndiceComparado + 8]];
+        direita = [elementosTabela[ultimoIndiceComparado + 5], elementosTabela[ultimoIndiceComparado + 6], elementosTabela[ultimoIndiceComparado + 7], elementosTabela[ultimoIndiceComparado + 8], elementosTabela[ultimoIndiceComparado + 9]];
     }
     if (opcaoSelecionada == comparaValores(esquerda, direita)) {
         if (opcaoSelecionada == "E") {
@@ -290,13 +283,13 @@ function chacoalhaTela() {
 
 function escolheOpcao(opcao) {
     opcaoSelecionada = opcao;
-    if (ultimoIndiceComparado < 9) {
+    if (ultimoIndiceComparado < 10) {
         desenhaTabela();
         efetuaPrimeiraRodadaComparativa();
-    } else if (ultimoIndiceComparado < 18) {
+    } else if (ultimoIndiceComparado < 20) {
         desenhaTabela();
         efetuaSegundaRodadaComparativa();
-    } else if (ultimoIndiceComparado < 27) {
+    } else if (ultimoIndiceComparado < 30) {
         desenhaTabela();
         efetuaTerceiraRodadaComparativa();
     }
