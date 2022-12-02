@@ -148,7 +148,9 @@ function desenhaTabela() {
         document.querySelector("#" + CSS.escape(21)).classList.add("direita");
         document.querySelector("#" + CSS.escape(22)).classList.add("direita");
         document.querySelector("#" + CSS.escape(23)).classList.add("direita");
-
+    } else {
+        document.querySelectorAll("td").classList.remove("esquerda");
+        document.querySelectorAll("td").classList.remove("direita");
     }
 }
 
