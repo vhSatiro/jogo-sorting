@@ -285,7 +285,7 @@ function efetuaTerceiraRodadaComparativa() {
         document.querySelector("#balao-alerta").style.backgroundColor = '#c4fddf';
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
-        if (ultimoIndiceComparado == 24) {
+        if (ultimoIndiceComparado == 27) {
             if (pontuacao >= 50) {
                 document.querySelector("#balao-alerta h3").innerHTML = "Parabéns você completou a ordenação com sucesso.";
             } else {
