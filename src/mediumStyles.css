@@ -17,11 +17,58 @@ body {
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
 }
 
+.botao-voltar {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #000;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(220, 205, 0);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.botao-reiniciar {
+    border: 0;
+    line-height: 2.5;
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    border-radius: 10px;
+    background-color: rgb(4, 0, 255);
+    background-image: linear-gradient(to top left, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2) 30%, rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
 .botao-direita:hover {
     background-color: rgba(255, 0, 0, 1);
+    cursor: pointer;
 }
 
 .botao-direita:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.botao-reiniciar:hover {
+    cursor: pointer;
+    background-color: rgb(12, 62, 226);
+}
+
+.botao-reiniciar:active {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+.botao-voltar:hover {
+    cursor: pointer;
+    background-color: rgb(252, 235, 7);
+}
+
+.botao-voltar:active {
     box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
 }
 
@@ -40,6 +87,7 @@ body {
 }
 
 .botao-esquerda:hover {
+    cursor: pointer;
     background-color: rgba(0, 155, 0, 1);
 }
 
@@ -154,6 +202,12 @@ td.pixel {
     left: 180px;
 }
 
+#botoes-secundarios {
+    position: absolute;
+    top: 850px;
+    left: 800px;
+}
+
 #pontuacao {
     position: absolute;
     top: 760px;
@@ -174,4 +228,10 @@ td.pixel {
     color: black;
     background-color: white;
     padding: 15px;
+}
+
+.pixel-size {
+    top: 70%;
+    left: 40%;
+    position: absolute;
 }
