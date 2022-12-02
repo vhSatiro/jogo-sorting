@@ -21,6 +21,7 @@ function start() {
     document.onkeydown = checkKey;
     pontuacao = 0;
     atualizaPontuacao();
+    document.querySelector("#balao-alerta h3").innerHTML = "";
 }
 
 function checkKey(e) {
@@ -117,8 +118,9 @@ function desenhaTabela() {
             const indicePixel = coluna + linha * colunasTabela
             const elementoAtual = elementosTabela[indicePixel];
             html += `<td id="${indicePixel}">`
-            html += `<div class="pixel-index">${indicePixel}</div>`
+                // html += `<div class="pixel-index">${indicePixel}</div>`
             html += `<img src="${elementoAtual.imagem !== undefined ? elementoAtual.imagem : ''}" width="${elementoAtual.widImg !== undefined ? elementoAtual.widImg : ''}" height="${elementoAtual.heiImg !== undefined ? elementoAtual.heiImg : ''}">`
+            html += `<div class="pixel-size">${elementoAtual.valor !== undefined ? elementoAtual.valor : ''}</div>`
             html += `</td>`
         }
         html += "</tr>";
@@ -259,6 +261,13 @@ function efetuaTerceiraRodadaComparativa() {
         document.querySelector("#balao-alerta").style.backgroundColor = '#c4fddf';
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
+        if (ultimoIndiceComparado == 24) {
+            if (pontuacao >= 50) {
+                document.querySelector("#balao-alerta h3").innerHTML = "Parabéns você completou a ordenação com sucesso.";
+            } else {
+                document.querySelector("#balao-alerta h3").innerHTML = "Você não atingiu a pontuação necessária, reinicie o jogo.";
+            }
+        }
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
         document.querySelector("#balao-alerta h3").innerHTML = "Tente Novamente!";
