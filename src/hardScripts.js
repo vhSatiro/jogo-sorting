@@ -1,4 +1,4 @@
-const colunasTabela = 8;
+const colunasTabela = 10;
 const linhasTabela = 4;
 const elementosTabela = [];
 let opcaoSelecionada = "";
@@ -48,8 +48,8 @@ function criarTabela() {
 function renderizaVetor() {
     for (let i = 0; i < colunasTabela; i++) {
         do {
-            const random = Math.floor(Math.random() * 10);
-            if (random > 0 && (vetor.find(item => item.valor === random) === undefined) && random < 9) {
+            const random = Math.floor(Math.random() * 11);
+            if (random > 0 && (vetor.find(item => item.valor === random) === undefined) && random < 11) {
                 var elemento = { valor: random, imagem: null, widImg: 0, heiImg: 0 };
                 switch (random) {
                     case 1:
@@ -84,13 +84,23 @@ function renderizaVetor() {
                         break;
                     case 7:
                         elemento.imagem = "img/7avocado.png";
-                        elemento.widImg = 44;
-                        elemento.heiImg = 50;
+                        elemento.widImg = 36;
+                        elemento.heiImg = 42;
                         break;
                     case 8:
                         elemento.imagem = "img/8pineapple.png";
                         elemento.widImg = 44;
+                        elemento.heiImg = 54;
+                        break;
+                    case 9:
+                        elemento.imagem = "img/9watermelon.png";
+                        elemento.widImg = 44;
                         elemento.heiImg = 45;
+                        break;
+                    case 10:
+                        elemento.imagem = "img/10jackfruit.png";
+                        elemento.widImg = 48;
+                        elemento.heiImg = 53;
                         break;
                     default:
                         break;
@@ -126,28 +136,32 @@ function desenhaTabela() {
     html += "</table>";
 
     document.querySelector("#elemento").innerHTML = html;
-    if (ultimoIndiceComparado < 8) {
+    if (ultimoIndiceComparado < 10) {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 12) {
-        document.querySelector("#" + CSS.escape(8)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(9)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(10)).classList.add("direita");
-        document.querySelector("#" + CSS.escape(11)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 16) {
+    } else if (ultimoIndiceComparado < 15) {
+        document.querySelector("#" + CSS.escape(10)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(11)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(12)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(13)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(13)).classList.add("direita");
         document.querySelector("#" + CSS.escape(14)).classList.add("direita");
-        document.querySelector("#" + CSS.escape(15)).classList.add("direita");
-    } else if (ultimoIndiceComparado < 24) {
+    } else if (ultimoIndiceComparado < 20) {
+        document.querySelector("#" + CSS.escape(15)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(16)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(17)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(18)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(19)).classList.add("esquerda");
-        document.querySelector("#" + CSS.escape(20)).classList.add("direita");
-        document.querySelector("#" + CSS.escape(21)).classList.add("direita");
-        document.querySelector("#" + CSS.escape(22)).classList.add("direita");
-        document.querySelector("#" + CSS.escape(23)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(18)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(19)).classList.add("direita");
+    } else if (ultimoIndiceComparado < 30) {
+        document.querySelector("#" + CSS.escape(20)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(21)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(22)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(23)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(24)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(25)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(26)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(27)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(28)).classList.add("direita");
+        document.querySelector("#" + CSS.escape(29)).classList.add("direita");
     } else {
         document.querySelectorAll("td").classList.remove("esquerda");
         document.querySelectorAll("td").classList.remove("direita");
@@ -192,20 +206,21 @@ function efetuaPrimeiraRodadaComparativa() {
         ultimoIndiceComparado = ultimoIndiceComparado + 2;
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("direita");
-        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
-        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
         chacoalhaTela();
     }
     desenhaTabela();
 }
 
 function efetuaSegundaRodadaComparativa() {
-    if ((ultimoIndiceComparado % 4) == 0) {
-        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1]];
-        direita = [elementosTabela[ultimoIndiceComparado + 2], elementosTabela[ultimoIndiceComparado + 3]];
+    if (ultimoIndiceComparado == 10) {
+        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2]];
+        direita = [elementosTabela[ultimoIndiceComparado + 3], elementosTabela[ultimoIndiceComparado + 4]];
+    } else if (ultimoIndiceComparado == 15) {
+        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2]];
+        direita = [elementosTabela[ultimoIndiceComparado + 3], elementosTabela[ultimoIndiceComparado + 4]];
     }
     if (opcaoSelecionada == comparaValores(esquerda, direita)) {
         if (opcaoSelecionada == "E") {
@@ -219,21 +234,19 @@ function efetuaSegundaRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 2)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 3)).classList.remove("direita");
-        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
-        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
         chacoalhaTela();
     }
     desenhaTabela();
 }
 
 function efetuaTerceiraRodadaComparativa() {
-    if ((ultimoIndiceComparado % 8) == 0) {
-        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2], elementosTabela[ultimoIndiceComparado + 3]];
-        direita = [elementosTabela[ultimoIndiceComparado + 4], elementosTabela[ultimoIndiceComparado + 5], elementosTabela[ultimoIndiceComparado + 6], elementosTabela[ultimoIndiceComparado + 7]];
+    if (ultimoIndiceComparado == 20) {
+        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2], elementosTabela[ultimoIndiceComparado + 3], elementosTabela[ultimoIndiceComparado + 4]];
+        direita = [elementosTabela[ultimoIndiceComparado + 5], elementosTabela[ultimoIndiceComparado + 6], elementosTabela[ultimoIndiceComparado + 7], elementosTabela[ultimoIndiceComparado + 8], elementosTabela[ultimoIndiceComparado + 9]];
     }
     if (opcaoSelecionada == comparaValores(esquerda, direita)) {
         if (opcaoSelecionada == "E") {
@@ -251,12 +264,10 @@ function efetuaTerceiraRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 5)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 6)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 7)).classList.remove("direita");
-        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
-        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
         chacoalhaTela();
     }
     desenhaTabela();
@@ -272,13 +283,13 @@ function chacoalhaTela() {
 
 function escolheOpcao(opcao) {
     opcaoSelecionada = opcao;
-    if (ultimoIndiceComparado < 8) {
+    if (ultimoIndiceComparado < 10) {
         desenhaTabela();
         efetuaPrimeiraRodadaComparativa();
-    } else if (ultimoIndiceComparado < 16) {
+    } else if (ultimoIndiceComparado < 20) {
         desenhaTabela();
         efetuaSegundaRodadaComparativa();
-    } else if (ultimoIndiceComparado < 24) {
+    } else if (ultimoIndiceComparado < 30) {
         desenhaTabela();
         efetuaTerceiraRodadaComparativa();
     }
