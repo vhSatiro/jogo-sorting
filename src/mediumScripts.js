@@ -215,11 +215,13 @@ function efetuaPrimeiraRodadaComparativa() {
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("direita");
-        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
+        document.querySelector("#balao-alerta h3").innerHTML = "Parabéns você acertou!";
+        document.querySelector("#balao-alerta").style.backgroundColor = '#c4fddf';
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
-        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
+        document.querySelector("#balao-alerta h3").innerHTML = "Tente Novamente!";
+        document.querySelector("#balao-alerta").style.backgroundColor = '#f8c2bc';
         chacoalhaTela();
     }
     desenhaTabela();
@@ -245,12 +247,14 @@ function efetuaSegundaRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 2)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 3)).classList.remove("direita");
-        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
+        document.querySelector("#balao-alerta h3").innerHTML = "Parabéns você acertou!";
+        document.querySelector("#balao-alerta").style.backgroundColor = '#c4fddf';
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
-        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
+        document.querySelector("#balao-alerta h3").innerHTML = "Tente Novamente!";
+        document.querySelector("#balao-alerta").style.backgroundColor = '#f8c2bc';
         chacoalhaTela();
     }
     desenhaTabela();
@@ -277,7 +281,8 @@ function efetuaTerceiraRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 5)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 6)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 7)).classList.remove("direita");
-        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
+        document.querySelector("#balao-alerta h3").innerHTML = "Parabéns você acertou!";
+        document.querySelector("#balao-alerta").style.backgroundColor = '#c4fddf';
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
         if (ultimoIndiceComparado == 24) {
@@ -289,7 +294,8 @@ function efetuaTerceiraRodadaComparativa() {
         }
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
-        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
+        document.querySelector("#balao-alerta h3").innerHTML = "Tente Novamente!";
+        document.querySelector("#balao-alerta").style.backgroundColor = '#f8c2bc';
         chacoalhaTela();
     }
     desenhaTabela();
