@@ -93,7 +93,7 @@ td.pixel {
 }
 
 .direita {
-    background-color: #f8c2bc;
+    background-color: #f8e7e6;
 }
 
 #jogo.tremendo {
@@ -148,10 +148,10 @@ td.pixel {
     position: absolute;
 }
 
-#resposta {
+#botoes {
     position: absolute;
-    top: 1500px;
-    left: 400px;
+    top: 850px;
+    left: 180px;
 }
 
 #pontuacao {
