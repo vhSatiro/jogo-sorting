@@ -78,17 +78,17 @@ function renderizaVetor() {
                         elemento.heiImg = 50;
                         break;
                     case 6:
-                        elemento.imagem = "img/6avocado.png";
-                        elemento.widImg = 35;
-                        elemento.heiImg = 35;
+                        elemento.imagem = "img/6mango.png";
+                        elemento.widImg = 40;
+                        elemento.heiImg = 45;
                         break;
                     case 7:
-                        elemento.imagem = "img/7pineapple.png";
+                        elemento.imagem = "img/7avocado.png";
                         elemento.widImg = 44;
                         elemento.heiImg = 50;
                         break;
                     case 8:
-                        elemento.imagem = "img/8watermelon.png";
+                        elemento.imagem = "img/8pineapple.png";
                         elemento.widImg = 44;
                         elemento.heiImg = 45;
                         break;
@@ -117,7 +117,7 @@ function desenhaTabela() {
             const indicePixel = coluna + linha * colunasTabela
             const elementoAtual = elementosTabela[indicePixel];
             html += `<td id="${indicePixel}">`
-            html += `<div class="pixel-index">${elementoAtual.valor !== undefined ? elementoAtual.valor : ''}</div>`
+            html += `<div class="pixel-index">${indicePixel}</div>`
             html += `<img src="${elementoAtual.imagem !== undefined ? elementoAtual.imagem : ''}" width="${elementoAtual.widImg !== undefined ? elementoAtual.widImg : ''}" height="${elementoAtual.heiImg !== undefined ? elementoAtual.heiImg : ''}">`
             html += `</td>`
         }
@@ -153,8 +153,8 @@ function desenhaTabela() {
 }
 
 function comparaValores(esquerda, direita) {
-    let esquerdaMin = esquerda.length > 0 ? esquerda[0].valor : 9;
-    let direitaMin = direita.length > 0 ? direita[0].valor : 9;
+    let esquerdaMin = esquerda.length > 0 ? esquerda[0].valor : colunasTabela + 1;
+    let direitaMin = direita.length > 0 ? direita[0].valor : colunasTabela + 1;
 
     for (let i = 0; i < esquerda.length; i++) {
         esquerdaMin = (esquerda[i].valor < esquerdaMin) ? esquerda[i].valor : esquerdaMin;
@@ -190,9 +190,11 @@ function efetuaPrimeiraRodadaComparativa() {
         ultimoIndiceComparado = ultimoIndiceComparado + 2;
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("direita");
+        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
+        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
         chacoalhaTela();
     }
     desenhaTabela();
