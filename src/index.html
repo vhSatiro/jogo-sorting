@@ -1,38 +1,64 @@
 <html>
+  <head>
+    <title>Fruit Sort</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-    <title>Sorting Game</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <div class="titulo">
-        Sorting Game
-    </div>
+  <body>
+    <div class="titulo">Fruit Sort</div>
     <div class="texto-explicativo">
-        <h3>Como jogar:</h3>
-        <p>Bem vindo ao Fruit Sort, jogador(a)!</p>
+      <h3>Como jogar:</h3>
+      <p>Bem vindo ao Fruit Sort, jogador(a)!</p>
 
-           <p>Este jogo utiliza do método de ordenação "Merge Sort".
-            ara jogar, primeiro selecione a dificuldade que deseja.</p>
-            
-           <p>Ao entrar no jogo, você precisará ordenar de forma crescente as frutas conforme seu tamanho, utilizando os botões "Esquerda" e "Direita" presentes na parte de baixo da sua banquinha!</p>
-            
-            <p>A ordenação é feita comparando as frutas presentes nos espaços em verde (ao lado esquerdo da comparação) com as frutas nos espaços vermelhos (ao lado direito). 
-            Se a fruta presente no espaço verde for menor do que a fruta no espaço vermelho, então devemos selecionar o botão para a esquerda. 
-            Isso fará com que a menor fruta no espaço verde desça para as prateleiras de baixo. Assim que você conseguir comparar toda a prateleira, poderá iniciar a comparação da 
-            prateleira de baixo, até completar a ordenação.</p>
-            
-            <p>A cada acerto, você ganhará 5 pontos, mas ao errar, perderá 4 pontos.
-            Para concluir com sucesso a fase, você deverá obter 50 pontos ou mais.</p>
-            
-           <p>Bom jogo e bom aprendizado! </p>
+      <p>
+        Este jogo utiliza do método de ordenação "Merge Sort". ara jogar,
+        primeiro selecione a dificuldade que deseja.
+      </p>
+
+      <p>
+        Ao entrar no jogo, você precisará ordenar de forma crescente as frutas
+        conforme seu tamanho, utilizando os botões "Esquerda" e "Direita"
+        presentes na parte de baixo da sua banquinha!
+      </p>
+
+      <p>
+        A ordenação é feita comparando as frutas presentes nos espaços em verde
+        (ao lado esquerdo da comparação) com as frutas nos espaços vermelhos (ao
+        lado direito). Se a fruta presente no espaço verde for menor do que a
+        fruta no espaço vermelho, então devemos selecionar o botão para a
+        esquerda. Isso fará com que a menor fruta no espaço verde desça para as
+        prateleiras de baixo. Assim que você conseguir comparar toda a
+        prateleira, poderá iniciar a comparação da prateleira de baixo, até
+        completar a ordenação.
+      </p>
+
+      <p>
+        A cada acerto, você ganhará 5 pontos, mas ao errar, perderá 4 pontos.
+        Para concluir com sucesso a fase, você deverá obter 50 pontos ou mais.
+      </p>
+
+      <p>Bom jogo e bom aprendizado!</p>
     </div>
     <div class="botoes-dificuldade">
-        <button class="custom-btn" onclick="location.replace('easy.html')">Fácil</button>
-        <button class="custom-btn" onclick="location.replace('medium.html')">Médio</button>
-        <button class="custom-btn" onclick="location.replace('hard.html')">Difícil</button>
+      <button class="custom-btn" onclick="location.replace('easy.html')">
+        Fácil
+      </button>
+      <button class="custom-btn" onclick="location.replace('medium.html')">
+        Médio
+      </button>
+      <button class="custom-btn" onclick="location.replace('hard.html')">
+        Difícil
+      </button>
     </div>
-</body>
-
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+      new window.VLibras.Widget("https://vlibras.gov.br/app");
+    </script>
+  </body>
 </html>
