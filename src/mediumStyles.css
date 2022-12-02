@@ -124,23 +124,23 @@ td.pixel {
 }
 
 .cabecalhoPrateleira {
-    background-image: url("img/headerPrateleira.png");
-    width: 500px;
+    background-image: url("img/headerPrateleiraMedio.png");
+    width: 552px;
     height: 189px;
     background-size: cover;
 }
 
 .linhaPrateleira {
-    background-image: url("img/linhaPrateleira.png");
-    width: 500px;
+    background-image: url("img/linhaPrateleiraMedio.png");
+    width: 554px;
     height: 131px;
     background-size: cover;
 }
 
 .rodapePrateleira {
-    background-image: url("img/rodapePrateleira.png");
-    width: 500px;
-    height: 103px;
+    background-image: url("img/rodapePrateleiraMedio.png");
+    width: 552px;
+    height: 104px;
     background-size: cover;
 }
 
@@ -160,18 +160,4 @@ td.pixel {
     left: 200px;
     color: white;
     font-size: 25px;
-}
-
-#balao-alerta {
-    width: 200px;
-    height: 100px;
-    border: 1px solid black;
-    border-radius: 15px;
-    position: absolute;
-    left: 800px;
-    /* left -> 1250px posiciona na direita e 50px posiciona na esquerda  */
-    top: 100px;
-    color: black;
-    background-color: white;
-    padding: 15px;
 }

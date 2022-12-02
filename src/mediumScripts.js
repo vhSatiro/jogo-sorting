@@ -1,4 +1,4 @@
-const colunasTabela = 8;
+const colunasTabela = 9;
 const linhasTabela = 4;
 const elementosTabela = [];
 let opcaoSelecionada = "";
@@ -7,9 +7,9 @@ let ultimoIndiceComparado;
 let rodada;
 let esquerda;
 let direita;
+let pontuacao;
 
 function start() {
-    // debugger;
     renderizaVetor();
     criarTabela();
     desenhaPrimeiraLinha();
@@ -18,7 +18,24 @@ function start() {
     desenhaTabela();
     esquerda = [];
     direita = [];
+    document.onkeydown = checkKey;
+    pontuacao = 0;
+    atualizaPontuacao();
 }
+
+function checkKey(e) {
+    e = e || window.event;
+
+    if (e.keyCode == '37') {
+        escolheOpcao('E');
+    } else if (e.keyCode == '39') {
+        escolheOpcao('D');
+    } else if (e.keyCode == '32') {
+        start();
+    }
+
+}
+
 
 function criarTabela() {
     const numeroElementos = colunasTabela * linhasTabela;
@@ -32,48 +49,53 @@ function renderizaVetor() {
     for (let i = 0; i < colunasTabela; i++) {
         do {
             const random = Math.floor(Math.random() * 10);
-            if (random > 0 && (vetor.find(item => item.valor === random) === undefined) && random < 9) {
+            if (random > 0 && (vetor.find(item => item.valor === random) === undefined) && random < 10) {
                 var elemento = { valor: random, imagem: null, widImg: 0, heiImg: 0 };
                 switch (random) {
                     case 1:
-                        elemento.imagem = "img/1grapes.png";
-                        elemento.widImg = 60;
-                        elemento.heiImg = 100;
+                        elemento.imagem = "img/1blackberry.png";
+                        elemento.widImg = 17;
+                        elemento.heiImg = 22;
                         break;
                     case 2:
                         elemento.imagem = "img/2strawberry.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.widImg = 17;
+                        elemento.heiImg = 22;
                         break;
                     case 3:
                         elemento.imagem = "img/3lemon.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.widImg = 27;
+                        elemento.heiImg = 27;
                         break;
                     case 4:
                         elemento.imagem = "img/4apple.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.widImg = 25;
+                        elemento.heiImg = 25;
                         break;
                     case 5:
                         elemento.imagem = "img/5banana.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.widImg = 25;
+                        elemento.heiImg = 50;
                         break;
                     case 6:
-                        elemento.imagem = "img/7avocado.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.imagem = "img/6mango.png";
+                        elemento.widImg = 40;
+                        elemento.heiImg = 45;
                         break;
                     case 7:
-                        elemento.imagem = "img/8pineapple.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.imagem = "img/7avocado.png";
+                        elemento.widImg = 44;
+                        elemento.heiImg = 50;
                         break;
                     case 8:
+                        elemento.imagem = "img/8pineapple.png";
+                        elemento.widImg = 44;
+                        elemento.heiImg = 45;
+                        break;
+                    case 9:
                         elemento.imagem = "img/9watermelon.png";
-                        elemento.widImg = 100;
-                        elemento.heiImg = 100;
+                        elemento.widImg = 44;
+                        elemento.heiImg = 45;
                         break;
                     default:
                         break;
@@ -83,13 +105,7 @@ function renderizaVetor() {
                 vetor.push(elemento);
             }
         } while (vetor.length < colunasTabela);
-        debugger;
     }
-}
-
-function adicionaImagem(random) {
-
-
 }
 
 function desenhaPrimeiraLinha() {
@@ -105,10 +121,9 @@ function desenhaTabela() {
         for (let coluna = 0; coluna < colunasTabela; coluna++) {
             const indicePixel = coluna + linha * colunasTabela
             const elementoAtual = elementosTabela[indicePixel];
-            debugger;
             html += `<td id="${indicePixel}">`
-            html += `<div class="pixel-index">${elementoAtual.valor}</div>`
-            html += `<img src="${elementoAtual.imagem}" width="${elementoAtual.widImg}" height="${elementoAtual.heiImg}">`
+            html += `<div class="pixel-index">${indicePixel}</div>`
+            html += `<img src="${elementoAtual.imagem !== undefined ? elementoAtual.imagem : ''}" width="${elementoAtual.widImg !== undefined ? elementoAtual.widImg : ''}" height="${elementoAtual.heiImg !== undefined ? elementoAtual.heiImg : ''}">`
             html += `</td>`
         }
         html += "</tr>";
@@ -116,7 +131,11 @@ function desenhaTabela() {
     html += "</table>";
 
     document.querySelector("#elemento").innerHTML = html;
-    if (ultimoIndiceComparado < 8) {
+    if (ultimoIndiceComparado < 3) {
+        document.querySelector("#" + CSS.escape(0)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(1)).classList.add("esquerda");
+        document.querySelector("#" + CSS.escape(2)).classList.add("direita");
+    } else if (ultimoIndiceComparado < 9) {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.add("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.add("direita");
     } else if (ultimoIndiceComparado < 12) {
@@ -143,25 +162,50 @@ function desenhaTabela() {
 }
 
 function comparaValores(esquerda, direita) {
-    return Math.min(...esquerda) < Math.min(...direita) ? "E" : "D";
+    let esquerdaMin = esquerda.length > 0 ? esquerda[0].valor : colunasTabela + 1;
+    let direitaMin = direita.length > 0 ? direita[0].valor : colunasTabela + 1;
+
+    for (let i = 0; i < esquerda.length; i++) {
+        esquerdaMin = (esquerda[i].valor < esquerdaMin) ? esquerda[i].valor : esquerdaMin;
+    }
+    for (let i = 0; i < direita.length; i++) {
+        direitaMin = (direita[i].valor < direitaMin) ? direita[i].valor : direitaMin;
+    }
+    return esquerdaMin < direitaMin ? "E" : "D";
+}
+
+function recuperaMenorValor(vetor) {
+    let vetorMin = vetor.length > 0 ? vetor[0].valor : vetor.length;
+
+    for (let i = 0; i < vetor.length; i++) {
+        vetorMin = (vetor[i].valor < vetorMin) ? vetor[i].valor : vetorMin;
+    }
+
+    return vetorMin;
 }
 
 function efetuaPrimeiraRodadaComparativa() {
-    esquerda = elementosTabela[ultimoIndiceComparado];
-    direita = elementosTabela[ultimoIndiceComparado + 1];
-
-    if (opcaoSelecionada == comparaValores([esquerda], [direita])) {
+    if (ultimoIndiceComparado == 0) {
+        esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1]];
+        direita = [elementosTabela[ultimoIndiceComparado + 2]];
+    } else if (ultimoIndiceComparado > 2) {
+        esquerda = [elementosTabela[ultimoIndiceComparado]];
+        direita = [elementosTabela[ultimoIndiceComparado + 1]];
+    }
+    if (opcaoSelecionada == comparaValores(esquerda, direita)) {
         if (opcaoSelecionada == "E") {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = esquerda;
-            elementosTabela[ultimoIndiceComparado + colunasTabela + 1] = direita;
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(esquerda);
+            removeMenorDoArray(esquerda);
         } else {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = direita;
-            elementosTabela[ultimoIndiceComparado + colunasTabela + 1] = esquerda;
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(direita);
+            removeMenorDoArray(direita);
         }
-        ultimoIndiceComparado = ultimoIndiceComparado + 2;
+        ultimoIndiceComparado = ultimoIndiceComparado + 1;
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("direita");
+        pontuacao += 5;
     } else {
+        pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
         chacoalhaTela();
     }
     desenhaTabela();
@@ -172,13 +216,12 @@ function efetuaSegundaRodadaComparativa() {
         esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1]];
         direita = [elementosTabela[ultimoIndiceComparado + 2], elementosTabela[ultimoIndiceComparado + 3]];
     }
-
     if (opcaoSelecionada == comparaValores(esquerda, direita)) {
         if (opcaoSelecionada == "E") {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = Math.min(...esquerda);
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(esquerda);
             removeMenorDoArray(esquerda);
         } else {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = Math.min(...direita);
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(direita);
             removeMenorDoArray(direita);
         }
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.remove("esquerda");
@@ -186,7 +229,9 @@ function efetuaSegundaRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 2)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 3)).classList.remove("direita");
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
+        pontuacao += 5;
     } else {
+        pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
         chacoalhaTela();
     }
     desenhaTabela();
@@ -197,13 +242,12 @@ function efetuaTerceiraRodadaComparativa() {
         esquerda = [elementosTabela[ultimoIndiceComparado], elementosTabela[ultimoIndiceComparado + 1], elementosTabela[ultimoIndiceComparado + 2], elementosTabela[ultimoIndiceComparado + 3]];
         direita = [elementosTabela[ultimoIndiceComparado + 4], elementosTabela[ultimoIndiceComparado + 5], elementosTabela[ultimoIndiceComparado + 6], elementosTabela[ultimoIndiceComparado + 7]];
     }
-
     if (opcaoSelecionada == comparaValores(esquerda, direita)) {
         if (opcaoSelecionada == "E") {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = Math.min(...esquerda);
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(esquerda);
             removeMenorDoArray(esquerda);
         } else {
-            elementosTabela[ultimoIndiceComparado + colunasTabela] = Math.min(...direita);
+            elementosTabela[ultimoIndiceComparado + colunasTabela] = buscaMenorNoVetor(direita);
             removeMenorDoArray(direita);
         }
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado)).classList.remove("esquerda");
@@ -215,7 +259,11 @@ function efetuaTerceiraRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 6)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 7)).classList.remove("direita");
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
-    } else { chacoalhaTela(); }
+        pontuacao += 5;
+    } else {
+        pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
+        chacoalhaTela();
+    }
     desenhaTabela();
 }
 
@@ -224,10 +272,6 @@ function chacoalhaTela() {
     setTimeout(() => {
         document.querySelector("#jogo").classList.remove("tremendo");
     }, 1000);
-
-}
-
-function pontuacao() {
 
 }
 
@@ -243,15 +287,35 @@ function escolheOpcao(opcao) {
         desenhaTabela();
         efetuaTerceiraRodadaComparativa();
     }
+    atualizaPontuacao();
+}
+
+function atualizaPontuacao() {
+    document.querySelector("#pontuacaoContainer").innerHTML = pontuacao;
 }
 
 function removeMenorDoArray(vetor) {
-    const indiceRemover = vetor.indexOf(Math.min(...vetor));
+    let menorDoVetor = vetor[0].valor;
+    let indiceRemover = -1;
+
+
+    for (let i = 0; i < vetor.length; i++) {
+        indiceRemover = (vetor[i].valor <= menorDoVetor) ? i : indiceRemover;
+    }
     if (indiceRemover > -1) {
         vetor.splice(indiceRemover, 1)
     }
     return vetor;
 }
 
+function buscaMenorNoVetor(vetor) {
+    let menorDoVetor = vetor[0];
+
+    for (let i = 0; i < vetor.length; i++) {
+        menorDoVetor = (vetor[i].valor <= menorDoVetor.valor) ? vetor[i] : menorDoVetor;
+    }
+
+    return menorDoVetor;
+}
 
 start();
