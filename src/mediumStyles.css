@@ -161,3 +161,17 @@ td.pixel {
     color: white;
     font-size: 25px;
 }
+
+#balao-alerta {
+    width: 200px;
+    height: 100px;
+    border: 1px solid black;
+    border-radius: 15px;
+    position: absolute;
+    left: 800px;
+    /* left -> 1250px posiciona na direita e 50px posiciona na esquerda  */
+    top: 100px;
+    color: black;
+    background-color: white;
+    padding: 15px;
+}

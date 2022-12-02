@@ -219,10 +219,12 @@ function efetuaSegundaRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 1)).classList.remove("esquerda");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 2)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 3)).classList.remove("direita");
+        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
+        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
         chacoalhaTela();
     }
     desenhaTabela();
@@ -249,10 +251,12 @@ function efetuaTerceiraRodadaComparativa() {
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 5)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 6)).classList.remove("direita");
         document.querySelector("#" + CSS.escape(ultimoIndiceComparado + 7)).classList.remove("direita");
+        document.querySelector("#balao-alerta h3").innerHTML = "Você acertou";
         ultimoIndiceComparado = ultimoIndiceComparado + 1;
         pontuacao += 5;
     } else {
         pontuacao = pontuacao - 4 >= 0 ? pontuacao - 4 : 0;
+        document.querySelector("#balao-alerta h3").innerHTML = "Você errou";
         chacoalhaTela();
     }
     desenhaTabela();
